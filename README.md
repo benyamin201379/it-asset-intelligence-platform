@@ -63,3 +63,8 @@ This makes the project useful as a simplified prototype for IT asset intelligenc
 ```bash
 git clone https://github.com/benyamin201379/it-asset-intelligence-platform.git
 cd it-asset-intelligence-platform
+## 🔗 API Documentation
+
+Swagger UI available at:
+
+http://127.0.0.1:8000/docs
