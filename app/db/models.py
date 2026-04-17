@@ -1,7 +1,5 @@
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import declarative_base
-
-Base = declarative_base()
+from sqlalchemy import Column, Integer, String, ForeignKey
+from app.db.database import Base
 
 
 class Asset(Base):
@@ -12,3 +10,12 @@ class Asset(Base):
     asset_type = Column(String, nullable=False)
     owner = Column(String, nullable=False)
     criticality = Column(String, nullable=False)
+
+
+class AssetRelation(Base):
+    __tablename__ = "asset_relations"
+
+    id = Column(Integer, primary_key=True, index=True)
+    source_asset_id = Column(Integer, ForeignKey("assets.id"), nullable=False)
+    target_asset_id = Column(Integer, ForeignKey("assets.id"), nullable=False)
+    relation_type = Column(String, nullable=False)

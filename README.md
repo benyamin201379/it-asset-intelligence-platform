@@ -1,32 +1,45 @@
 # IT Asset Intelligence Platform
 
-A backend platform for managing IT assets, dependencies, and ISO 27001-inspired risk and security controls.
+A backend system for managing IT assets, dependencies, and risk analysis using FastAPI and SQLite.
 
-## Overview
-This project is designed to model IT assets such as servers, databases, applications, and endpoints, including their dependencies and basic security-relevant properties.
+## Features
 
-The goal is to simulate a simplified enterprise-grade asset intelligence platform inspired by real-world IT asset management and compliance workflows.
-
-## Planned Features
-- Asset inventory management
-- Relationship modeling between systems
-- Security controls per asset
-- ISO 27001-inspired compliance checks
-- Risk scoring
-- Impact analysis for dependent systems
-- REST API with FastAPI
-- Automated tests
+- Asset Management (CRUD)
+- Asset Relationships
+- Dependency Tracking
+- Impact Analysis
+- Risk Scoring System
 
 ## Tech Stack
-- Python
+
 - FastAPI
-- PostgreSQL
-- SQLAlchemy / SQLModel
-- Pytest
-- Docker
+- SQLAlchemy
+- SQLite
+- Python
 
-## Project Status
-Initial setup phase
+## API Endpoints
 
-## Long-Term Goal
-Build a strong portfolio project that demonstrates backend engineering, system design, security awareness, and enterprise software thinking., and ISO 27001-inspired risk and security controls.
+### Assets
+- POST /assets
+- GET /assets
+- GET /assets/{id}
+- PUT /assets/{id}
+- DELETE /assets/{id}
+
+### Relations
+- POST /relations
+- GET /relations
+
+### Analysis
+- GET /assets/{id}/dependencies
+- GET /assets/{id}/impact
+- GET /assets/{id}/risk
+
+## Run Locally
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install fastapi uvicorn sqlalchemy
+
+python3 -m uvicorn app.main:app --reload
