@@ -208,3 +208,8 @@ __marimo__/
 *.db
 venv/
 __pycache__/
+venv/
+__pycache__/
+*.pyc
+test.db
+.DS_Store
