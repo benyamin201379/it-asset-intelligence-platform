@@ -1,36 +1,58 @@
 # IT Asset Intelligence Platform
 
-A backend API for managing IT assets, tracking system dependencies, analyzing impact, and calculating risk scores.
+A full-stack application for managing IT assets, analyzing system dependencies, and calculating operational risk.
 
-## Overview
+---
 
-Modern IT environments are highly interconnected.  
-This project models IT assets and their relationships, making it possible to understand dependencies between systems, detect cascading effects, and estimate operational risk.
+##  Overview
 
-The platform is built as a backend service using FastAPI, SQLAlchemy, and SQLite.
+Modern IT systems are highly interconnected.  
+This project models IT assets and their relationships to:
 
-## Key Features
+- track dependencies between systems
+- identify cascading failures
+- estimate operational risk
 
-- Full CRUD for IT assets
+It combines a FastAPI backend with a lightweight JavaScript frontend dashboard.
+
+---
+
+## 🧠 Key Features
+
+- Full CRUD operations for IT assets
 - Relationship management between systems
 - Dependency tracking
-- Impact analysis
-- Risk scoring based on asset criticality and dependencies
-- Prevention of duplicate relationships
-- Interactive API documentation with Swagger UI
+- Impact analysis (cascading effects)
+- Risk scoring based on:
+  - asset criticality
+  - number of dependencies
+- Interactive dashboard with:
+  - search functionality
+  - visual asset cards
+  - dynamic risk display
 
-## Tech Stack
+---
 
+##  Tech Stack
+
+### Backend
 - Python
 - FastAPI
 - SQLAlchemy
 - SQLite
 
-## API Endpoints
+### Frontend
+- HTML
+- CSS
+- JavaScript (Vanilla)
+
+---
+
+##  API Endpoints
 
 ### Assets
-- `POST /assets`
 - `GET /assets`
+- `POST /assets`
 - `GET /assets/{id}`
 - `PUT /assets/{id}`
 - `DELETE /assets/{id}`
@@ -45,26 +67,40 @@ The platform is built as a backend service using FastAPI, SQLAlchemy, and SQLite
 - `GET /assets/{id}/impact`
 - `GET /assets/{id}/risk`
 
-## Example Use Case
+---
 
-This project can be used to model scenarios such as:
+##  Example Use Case
 
-- An application server depends on a database server
-- A database server depends on storage or network services
-- If one component fails, downstream systems can be identified
-- A simple risk score can be calculated automatically
+A typical scenario:
 
-This makes the project useful as a simplified prototype for IT asset intelligence, CMDB-like system modeling, or infrastructure dependency analysis.
+- A web application depends on an API server  
+- The API server depends on a database  
+- The database depends on storage  
+
+ If one component fails, all dependent systems can be identified  
+ A risk score is calculated automatically  
+
+This simulates real-world infrastructure dependency analysis.
+
+---
+
+##  Frontend Dashboard
+
+Features:
+- Search assets by name
+- Visual cards for each asset
+- Color-coded criticality:
+  -  High
+  -  Medium
+  -  Low
+- Click on asset → show risk score & dependencies
+
+---
 
 ## Run Locally
 
-1. Clone the repository
+### 1. Clone repository
 
 ```bash
-git clone https://github.com/benyamin201379/it-asset-intelligence-platform.git
+git clone https://github.com/YOUR_USERNAME/it-asset-intelligence-platform.git
 cd it-asset-intelligence-platform
-## 🔗 API Documentation
-
-Swagger UI available at:
-
-http://127.0.0.1:8000/docs
