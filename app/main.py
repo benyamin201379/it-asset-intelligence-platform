@@ -1,10 +1,12 @@
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from app.db.database import engine, SessionLocal
-from app.db import models, schemas
-from app.db.database import Base
+from fastapi.middleware.cors import CORSMiddleware
 
+from app.db.database import engine, SessionLocal, Base
+from app.db import models, schemas
+
+# Create tables
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -12,6 +14,18 @@ app = FastAPI(
     version="0.5.0"
 )
 
+# 🔥 CORS FIX (WICHTIG für Frontend)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # erlaubt alle (für Entwicklung ok)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# -------------------------
+# DATABASE
+# -------------------------
 
 def get_db():
     db = SessionLocal()
@@ -20,6 +34,10 @@ def get_db():
     finally:
         db.close()
 
+
+# -------------------------
+# BASIC
+# -------------------------
 
 @app.get("/")
 def root():
@@ -146,6 +164,10 @@ def create_relation(relation: schemas.RelationCreate, db: Session = Depends(get_
 def get_relations(db: Session = Depends(get_db)):
     return db.query(models.AssetRelation).all()
 
+
+# -------------------------
+# ANALYSIS
+# -------------------------
 
 @app.get("/assets/{asset_id}/dependencies")
 def get_asset_dependencies(asset_id: int, db: Session = Depends(get_db)):
