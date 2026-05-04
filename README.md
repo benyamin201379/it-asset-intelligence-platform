@@ -17,6 +17,42 @@ It combines a FastAPI backend with a lightweight JavaScript frontend dashboard.
 
 ---
 
+## 🏗️ System Architecture
+
+```mermaid
+flowchart TD
+    A[Frontend Dashboard] -->|HTTP requests| B[FastAPI Backend]
+
+    B --> C[Asset Endpoints]
+    B --> D[Relation Endpoints]
+    B --> E[Analysis Endpoints]
+
+    C --> F[SQLAlchemy ORM]
+    D --> F
+    E --> F
+
+    F --> G[SQLite Database]
+
+    E --> H[Dependency Analysis]
+    E --> I[Impact Analysis]
+    E --> J[Risk Score Calculation]
+
+    H --> B
+    I --> B
+    J --> B
+
+    B -->|JSON responses| A
+```
+
+### 🔍 How it works
+
+- The frontend sends HTTP requests to the FastAPI backend
+- Asset endpoints handle CRUD operations for IT assets
+- Relation endpoints manage dependencies between assets
+- Analysis endpoints calculate dependencies, impact, and basic risk scores
+- SQLAlchemy connects the backend logic with the SQLite database
+- The API returns JSON responses to the frontend
+
 ## 🧠 Key Features
 
 - Full CRUD operations for IT assets
